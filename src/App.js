@@ -8,6 +8,7 @@ import UserProfile from "./components/UserProfile";
 import Home from "./components/Home";
 import RequireAuth from "./RequireAuth";
 import Notifications from "./components/Notifications";
+import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   return (
@@ -16,18 +17,16 @@ const App = () => {
       <Notifications />
       <Routes>
         <Route exact path="/" index element={<Home />} />
-        {!window.localStorage.getItem("token") && (
-          <Route path="/login" element={<Login />} />
-        )}
-        {!window.localStorage.getItem("token") && (
-          <Route path="/signup" element={<Signup />} />
-        )}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
         {/* protected routes */}
         <Route element={<RequireAuth />}>
           <Route exact path="/todos" index element={<Todos />} />
           <Route exact path="/profile" index element={<UserProfile />} />
         </Route>
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
