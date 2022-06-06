@@ -12,11 +12,7 @@ const SimpleSnackbar = () => {
     variant,
     open: openGlobal,
   } = useSelector((state) => state.notification);
-  console.log({
-    message,
-    variant,
-    open: openGlobal,
-  });
+
   const handleClose = () => {
     setOpen(false);
     dispatch(toggleNotfOff());

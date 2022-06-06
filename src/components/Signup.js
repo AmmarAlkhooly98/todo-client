@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Grid, TextField, Paper, Button, Typography } from "@mui/material";
 import { signupAction } from "../redux/actions/users";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const signedUp = useSelector((state) => state.auth.signupSuccess);
-  console.log(signedUp, "ddddd");
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -18,7 +16,6 @@ const Signup = () => {
 
   const handleInputChange = (e) => {
     userData[e.target.name] = e.target.value;
-    console.log(userData);
   };
 
   const handleSignup = async (e) => {

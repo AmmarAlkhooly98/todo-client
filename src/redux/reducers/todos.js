@@ -40,7 +40,6 @@ const todoReducer = (state = initialState, action) => {
         if (i === compTodoIndex) return action.payload;
         else return t;
       });
-      console.log(updatedCompTodos);
       return {
         ...state,
         todos: updatedCompTodos,
