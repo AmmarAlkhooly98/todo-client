@@ -2,10 +2,16 @@ import { Grid, Paper, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserAction } from "../redux/actions/users";
+import { fetchUserAction, updatePhotoAction } from "../redux/actions/users";
 import Todos from "./Todos";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -45,16 +51,39 @@ const UserProfile = () => {
     dispatch(fetchUserAction());
   }, []);
 
+  const [open, setOpen] = useState(false);
+  const [userPhoto, setUserPhoto] = useState(null);
+
+  const handelChange = (e) => {
+    setUserPhoto(e.target.files[0]);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = async () => {
+    const formData = new FormData();
+    formData.append("file", userPhoto);
+    try {
+      dispatch(updatePhotoAction(formData));
+      setOpen(false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div>
       {user ? (
         <Grid container>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12}>
             <Paper
               style={{
-                width: "30vw",
-                height: "80vh",
-                margin: "20px 10px 0 20px",
+                // width: "30vw",
+                // height: "80vh",
+                margin: "30px 20px 30px 30px",
+                padding: "20px",
               }}
             >
               <Grid container spacing={0}>
@@ -63,6 +92,7 @@ const UserProfile = () => {
                     overlap="circular"
                     anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                     variant="dot"
+                    onClick={handleClickOpen}
                   >
                     <Avatar
                       sx={{
@@ -73,6 +103,24 @@ const UserProfile = () => {
                       src={user?.image}
                     />
                   </StyledBadge>
+                  <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>Edit Todo</DialogTitle>
+                    <DialogContent>
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        name="name"
+                        label="todo"
+                        type="file"
+                        fullWidth
+                        variant="standard"
+                        onChange={handelChange}
+                      />
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose}>Save photo</Button>
+                    </DialogActions>
+                  </Dialog>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="h2">
@@ -86,14 +134,15 @@ const UserProfile = () => {
               </Grid>
             </Paper>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            style={{ position: "relative", right: "150px" }}
-          >
-            <Typography variant="h2">Your todos:</Typography>
-            <Todos />
+          <Grid item xs={12}>
+            <Paper
+              style={{
+                margin: "0 20px 30px 20px",
+                padding: "30px",
+              }}
+            >
+              <Todos />
+            </Paper>
           </Grid>
         </Grid>
       ) : (

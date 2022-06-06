@@ -6,6 +6,7 @@ export const FETCH_TOKEN = "FETCH_TOKEN";
 export const FETCH_TOKEN_FAILED = "FETCH_TOKEN_FAILED";
 export const TOKEN_REMOVE = "TOKEN_REMOVE";
 export const FETCH_USER = "FETCH_USER";
+export const UPLOAD_PHOTO = "UPLOAD_PHOTO";
 
 // FETCH TODO Constants
 export const FETCH_TODO = "FETCH_TODO";

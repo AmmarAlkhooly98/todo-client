@@ -4,6 +4,7 @@ import {
   FETCH_TOKEN_FAILED,
   TOKEN_REMOVE,
   FETCH_USER,
+  UPLOAD_PHOTO,
 } from "../constants";
 import API_URLS from "../../api";
 import { requestApi } from "../../helpers/index.js";
@@ -58,5 +59,21 @@ export const fetchUserAction = () => async (dispatch) => {
     .catch((e) => {
       console.error(e);
       dispatch({ type: FETCH_TOKEN_FAILED });
+    });
+};
+
+export const updatePhotoAction = (formData) => async (dispatch) => {
+  let data = {
+    url: API_URLS().AUTH.UPLOAD_PHOTO,
+    method: "POST",
+    body: formData,
+    contentType: "multipart/form-data",
+  };
+  await requestApi(data)
+    .then((res) => {
+      dispatch({ type: UPLOAD_PHOTO, payload: res?.data?.result });
+    })
+    .catch((e) => {
+      console.error(e);
     });
 };

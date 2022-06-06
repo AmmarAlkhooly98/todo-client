@@ -8,6 +8,7 @@ const API_URLS = (extraData) => ({
     SIGNUP: API_ROOT + "/users/signup/",
     LOGOUT: API_ROOT + "/users/logout/",
     PROFILE: API_ROOT + "/users/profile/",
+    UPLOAD_PHOTO: API_ROOT + "/users/uploadPhoto/",
   },
   TODO: {
     ROOT: API_ROOT + "/todos/", // can make GET & POST  todo with this endpoint, difference being the http verb

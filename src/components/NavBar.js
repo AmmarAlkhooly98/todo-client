@@ -29,7 +29,7 @@ const settingsLoggedIn = [
 const NavBar = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const loggedIn = window.localStorage.getItem("token") || null;
+  const loggedIn = useSelector((state) => state?.auth?.token);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 

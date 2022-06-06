@@ -4,6 +4,7 @@ import {
   FETCH_TOKEN_FAILED,
   TOKEN_REMOVE,
   FETCH_USER,
+  UPLOAD_PHOTO,
 } from "../constants";
 
 let initialState = {
@@ -40,6 +41,11 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
         isAuthenticated: true,
+      };
+    case UPLOAD_PHOTO:
+      return {
+        ...state,
+        user: { ...state.user, image: action.payload },
       };
     case TOKEN_REMOVE:
       window.localStorage.removeItem("token");

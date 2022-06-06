@@ -83,8 +83,7 @@ const Login = () => {
               </Grid>
               <Grid item xs={12} style={{ marginBottom: 15 }}>
                 <Button fullWidth type="submit">
-                  {" "}
-                  Login{" "}
+                  Login
                 </Button>
               </Grid>
             </Grid>
