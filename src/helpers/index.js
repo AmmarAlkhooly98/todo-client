@@ -20,7 +20,7 @@ export const requestApi = async (data) => {
   return await axios({
     url: data?.url,
     method: data?.method || "GET",
-    data: JSON.stringify(data?.body) || {},
+    data: data?.body || {},
     headers: {
       Accept: data?.accept || "application/json",
       "Content-Type": data?.contentType || "application/json",
