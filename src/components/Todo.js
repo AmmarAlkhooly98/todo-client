@@ -156,7 +156,9 @@ const Todo = ({ todo }) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography variant="h6">task description:</Typography>
-            <Typography paragraph>{todo.description}</Typography>
+            <Typography paragraph style={{ whiteSpace: "pre-line" }}>
+              {todo.description}
+            </Typography>
           </CardContent>
         </Collapse>
         <Dialog open={open} onClose={handleClose}>
@@ -192,8 +194,8 @@ const Todo = ({ todo }) => {
               inputProps={{ "aria-label": "controlled" }}
             />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Save Edit</Button>
+          <DialogActions onClick={handleClose}>
+            <Button>Save Edit</Button>
           </DialogActions>
         </Dialog>
       </Card>

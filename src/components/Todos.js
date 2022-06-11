@@ -13,6 +13,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
+import { Typography } from "@mui/material";
 
 const Todos = () => {
   const dispatch = useDispatch();
@@ -58,14 +59,28 @@ const Todos = () => {
   return (
     <Container>
       <Grid container spacing={8}>
-        {todos?.length ? todos.map((todo) => <Todo todo={todo} />) : null}
+        {todos?.length && Array.isArray(todos) ? (
+          todos.map((todo, i) => <Todo key={i} todo={todo} />)
+        ) : (
+          <Grid container style={{ margin: "100px 30px 0 30px" }}>
+            <Grid item xs={12}>
+              <Typography variant="h4">
+                You have no todos yet. Try creating a new todo from the add
+                button below.
+              </Typography>
+            </Grid>
+          </Grid>
+        )}
       </Grid>
       <Grid container justify="flex-end" alignItems="flex-end">
-        <IconButton style={{ position: "fixed", bottom: 50, right: 150 }}>
-          <Fab color="primary" aria-label="add" onClick={handleClickOpen}>
-            <AddIcon />
-          </Fab>
-        </IconButton>
+        <Fab
+          color="primary"
+          aria-label="add"
+          onClick={handleClickOpen}
+          style={{ position: "fixed", bottom: 50, right: 150 }}
+        >
+          <AddIcon />
+        </Fab>
       </Grid>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Todo</DialogTitle>
