@@ -4,7 +4,7 @@ The best todo App!
 
 [Checkout the app](https://ammar-todo-app.herokuapp.com/)
 
-[Here's the API Repo this app relies on](https://github.com/AmmarAlkhooly98/todo-api)
+[Here's the API Repo this todo react app uses](https://github.com/AmmarAlkhooly98/todo-api)
 
 ## Tech stack used
 
