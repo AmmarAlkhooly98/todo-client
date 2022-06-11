@@ -104,7 +104,7 @@ const UserProfile = () => {
                     />
                   </StyledBadge>
                   <Dialog open={open} onClose={handleClose}>
-                    <DialogTitle>Edit Todo</DialogTitle>
+                    <DialogTitle>Update Profile Picture</DialogTitle>
                     <DialogContent>
                       <TextField
                         autoFocus
