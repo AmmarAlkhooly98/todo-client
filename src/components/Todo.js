@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   completedTodoAction,
   editTodoAction,
@@ -91,8 +91,8 @@ const Todo = ({ todo }) => {
     <Grid
       item
       xs={12}
-      md={12}
-      lg={6}
+      md={6}
+      lg={4}
       style={{
         display: "flex",
         justifyContent: "space-evenly",
