@@ -25,14 +25,15 @@ const SimpleSnackbar = () => {
   return (
     <div>
       <Snackbar
-        sx={{ height: "20%" }}
+        sx={{ height: "25%" }}
         anchorOrigin={{
           vertical: "top",
           horizontal: "right",
         }}
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={3500}
         onClose={handleClose}
+        onClick={handleClose}
       >
         {openGlobal && (variant === "error" || variant === "warning") ? (
           <Alert

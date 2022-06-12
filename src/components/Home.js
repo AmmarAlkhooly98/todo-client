@@ -27,9 +27,10 @@ const Home = () => {
       }}
     >
       <Paper elevation={3}>
-        <h1>Best todo app!</h1>
-        <div style={{ margin: "50px" }}>
+        <h1>Best Simple Todo App!</h1>
+        <div style={{ margin: "30px", textAlign: "left" }}>
           <Accordion
+            style={{ padding: "7px" }}
             expanded={expanded === "panel1"}
             onChange={handleChange("panel1")}
           >
@@ -39,20 +40,24 @@ const Home = () => {
               id="panel1bh-header"
             >
               <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                General settings
+                Stay in Sync
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
-                I am an accordion
+                The ideal todo app should be effortless, simple, and actually
+                save you time
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-                feugiat. Aliquam eget maximus est, id dignissim quam.
+                Todo apps should always be ready to quickly capture a random
+                task. It shouldn’t require 16 steps to enter a todo. They should
+                be quick to allow you to add a todo and get it “out of your
+                head.”
               </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion
+            style={{ padding: "7px" }}
             expanded={expanded === "panel2"}
             onChange={handleChange("panel2")}
           >
@@ -62,21 +67,23 @@ const Home = () => {
               id="panel2bh-header"
             >
               <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                Users
+                Simple UI
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
-                You are currently not an owner
+                easy to use
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Donec placerat, lectus sed mattis semper, neque lectus feugiat
-                lectus, varius pulvinar diam eros in elit. Pellentesque
-                convallis laoreet laoreet.
+                Following on from quick capture, overall the app should be
+                simple. Simple to use. Simple user interface. Too many features
+                just clutter things up. And 99% of those extra bells and
+                whistles never get used.
               </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion
+            style={{ padding: "7px" }}
             expanded={expanded === "panel3"}
             onChange={handleChange("panel3")}
           >
@@ -86,21 +93,22 @@ const Home = () => {
               id="panel3bh-header"
             >
               <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                Advanced settings
+                Today List
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
-                Filtering has been entirely disabled for whole web server
+                You can’t do it all
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-                augue.
+                One of the best ways to “get work done” is to only concentrate
+                on your top tasks for today. The ability to see a subset or “Hit
+                List” for Today is important.
               </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion
+            style={{ padding: "7px" }}
             expanded={expanded === "panel4"}
             onChange={handleChange("panel4")}
           >
@@ -110,14 +118,14 @@ const Home = () => {
               id="panel4bh-header"
             >
               <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                Personal data
+                Pretty Design
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-                augue.
+                I bet you didn’t expect this one. But, yes, I am saying that the
+                app has to be visually appealing. Sarcasm aside, this is basic
+                UI design. The app has to look good and be readable, too.{" "}
               </Typography>
             </AccordionDetails>
           </Accordion>

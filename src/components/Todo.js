@@ -83,12 +83,7 @@ const Todo = ({ todo }) => {
   };
 
   const handelCompleted = async () => {
-    setTodoData((oldData) => {
-      return {
-        ...todoData,
-        completed: oldData.completed ? false : true,
-      };
-    });
+    todoData.completed = !todoData.completed;
     dispatch(completedTodoAction(todo.id, { ...todo, ...todoData }));
   };
 

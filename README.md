@@ -1,6 +1,6 @@
 # Todo React App
 
-The best todo App!
+The best simple todo App!
 
 [Checkout the app](https://ammar-todo-app.herokuapp.com/)
 

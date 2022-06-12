@@ -31,7 +31,7 @@ export const requestApi = async (data) => {
     .catch((e) => {
       let { data, status } = e.response;
       if (status === 401) window.localStorage.removeItem("token");
-      store.dispatch(toggleNotf(data));
+      store.dispatch(toggleNotf(data || { message: e.message }));
       throw new Error(e);
     });
 };

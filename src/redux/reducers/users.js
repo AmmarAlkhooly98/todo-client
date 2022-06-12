@@ -8,7 +8,7 @@ import {
 } from "../constants";
 
 let initialState = {
-  user: null,
+  user: JSON.parse(window.localStorage.getItem("user")) || null,
   token: window.localStorage.getItem("token") || null,
   isAuthenticated: false,
 };
@@ -17,7 +17,8 @@ const userReducer = (state = initialState, action) => {
   const { token, ...rest } = action?.payload || {};
   switch (action.type) {
     case FETCH_TOKEN:
-      window.localStorage.setItem("token", action?.payload?.token);
+      window.localStorage.setItem("token", token);
+      window.localStorage.setItem("user", JSON.stringify(rest));
       return {
         ...state,
         token,
