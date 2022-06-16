@@ -50,6 +50,7 @@ const userReducer = (state = initialState, action) => {
       };
     case TOKEN_REMOVE:
       window.localStorage.removeItem("token");
+      window.localStorage.removeItem("user");
       return {
         ...state,
         token: null,
