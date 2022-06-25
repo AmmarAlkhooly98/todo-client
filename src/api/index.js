@@ -1,4 +1,4 @@
-const API_ROOT = "http://localhost:8000/api/v1";
+const API_ROOT = "https://ammar-todo-api.herokuapp.com/api/v1";
 
 const API_URLS = (extraData) => ({
   // the extraData can be used to send url params and request query data if needed to api.
