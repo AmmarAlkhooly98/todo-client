@@ -76,7 +76,7 @@ const Todos = () => {
           color="primary"
           aria-label="add"
           onClick={handleClickOpen}
-          style={{ position: "fixed", bottom: 50, right: 150 }}
+          style={{ position: "fixed", bottom: 40, right: 70 }}
         >
           <AddIcon />
         </Fab>
