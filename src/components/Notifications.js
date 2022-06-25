@@ -41,7 +41,7 @@ const SimpleSnackbar = () => {
             severity={variant}
             style={{ minWidth: "150px" }}
           >
-            {message || "something went wrong"}
+            {message || variant || "something went wrong"}
           </Alert>
         ) : (
           <Alert
@@ -49,7 +49,7 @@ const SimpleSnackbar = () => {
             severity={variant}
             style={{ minWidth: "150px" }}
           >
-            {message || "success"}
+            {message || variant || "success"}
           </Alert>
         )}
       </Snackbar>

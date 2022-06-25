@@ -3,7 +3,7 @@ import { TOGGLE_NOTIFICATION, TOGGLE_NOTIFICATION_OFF } from "../constants";
 const initialState = {
   message: "",
   open: false,
-  variant: "info",
+  variant: null,
 };
 
 const notificationReducer = (state = initialState, action) => {
@@ -18,8 +18,6 @@ const notificationReducer = (state = initialState, action) => {
     case TOGGLE_NOTIFICATION_OFF:
       return {
         ...state,
-        message: "",
-        variant: "info",
         open: false,
       };
     default:
