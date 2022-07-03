@@ -12,7 +12,7 @@ export const fetchTodosAction = () => async (dispatch) => {
   let data = {
     url: API_URLS().TODO.ROOT,
   };
-  const response = await requestApi(data);
+  const response = await requestApi(data, false);
   dispatch({ type: FETCH_TODO, payload: response.data?.result });
 };
 

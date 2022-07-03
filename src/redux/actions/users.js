@@ -54,7 +54,7 @@ export const fetchUserAction = () => async (dispatch) => {
   let data = {
     url: API_URLS().AUTH.PROFILE,
   };
-  await requestApi(data)
+  await requestApi(data, false)
     .then((res) => {
       dispatch({ type: FETCH_USER, payload: res?.data?.result });
     })
