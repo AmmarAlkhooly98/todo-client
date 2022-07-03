@@ -1,21 +1,22 @@
-import store from "../redux/store";
-import { toggleNotf } from "../redux/actions/notifications";
 import axios from "axios";
+import store from "../redux/store";
+import { logoutAction } from "../redux/actions/users";
+import { toggleNotf } from "../redux/actions/notifications";
 
-export const checkHttpStatus = async (response) => {
+export const checkHttpStatus = async (response, showNotf) => {
   if (response.status >= 200 && response.status < 300) {
-    store.dispatch(toggleNotf(response.data));
+    showNotf && store.dispatch(toggleNotf(response.data));
     return response;
   }
 
   if (!response.data.success) {
-    store.dispatch(toggleNotf(response.data));
+    showNotf && store.dispatch(toggleNotf(response.data));
     throw new Error(response.statText);
   }
   return response;
 };
 
-export const requestApi = async (data) => {
+export const requestApi = async (data, showNotf = true) => {
   const token = window.localStorage.getItem("token") || null;
   return await axios({
     url: data?.url,
@@ -27,11 +28,13 @@ export const requestApi = async (data) => {
       Authorization: token ? `Bearer ${token}` : undefined,
     },
   })
-    .then(checkHttpStatus)
+    .then((res) => checkHttpStatus(res, showNotf))
     .catch((e) => {
       let { data, status } = e.response;
-      if (status === 401) window.localStorage.removeItem("token");
-      store.dispatch(toggleNotf(data || { message: e.message }));
+      if (status === 401) {
+        store.dispatch(logoutAction(false));
+      }
+      showNotf && store.dispatch(toggleNotf(data || { message: e.message }));
       throw new Error(e);
     });
 };

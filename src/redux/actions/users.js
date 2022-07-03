@@ -39,14 +39,16 @@ export const loginAction = (userData) => async (dispatch) => {
     });
 };
 
-export const logoutAction = () => async (dispatch) => {
-  let data = {
-    url: API_URLS().AUTH.LOGOUT,
-    method: "POST",
+export const logoutAction =
+  (showNotf = true) =>
+  async (dispatch) => {
+    let data = {
+      url: API_URLS().AUTH.LOGOUT,
+      method: "POST",
+    };
+    await requestApi(data, showNotf);
+    dispatch({ type: TOKEN_REMOVE });
   };
-  await requestApi(data);
-  dispatch({ type: TOKEN_REMOVE });
-};
 
 export const fetchUserAction = () => async (dispatch) => {
   let data = {
